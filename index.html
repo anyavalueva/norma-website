@@ -230,7 +230,7 @@
       line-height: 1.15;
       color: var(--ink);
       margin: 0;
-      max-width: 18ch;
+      max-width: 20ch;
       transition: color 400ms ease;
     }
     .hero-foot .meta {
@@ -584,7 +584,7 @@
       color: var(--ink-quiet);
       margin: 6px 0 0;
     }
-    .note-from-us .body { grid-column: 4 / -1; max-width: 56ch; }
+    .note-from-us .body { grid-column: 4 / -1; max-width: 68ch; }
     .note-from-us .body p {
       font-family: var(--serif);
       font-weight: 300;
@@ -809,7 +809,7 @@
   </a>
   <div class="links">
     <a href="#cabin">The cabin</a>
-    <a href="#place">The place</a>
+    <a href="#place">The area</a>
     <a href="#guide">Guide</a>
     <a href="#reserve">Reserve</a>
   </div>
@@ -826,12 +826,12 @@
 
       <div class="masthead" aria-hidden="true">
         <span>Port Angeles · WA</span>
-        <span class="center">A small cabin in the alders</span>
+        <span class="center">A cabin in the alders</span>
         <span>47.7°N · 123.5°W</span>
       </div>
 
       <div class="hero-foot">
-        <p class="where">A cabin in the <em>alders,</em> on the Olympic Peninsula.</p>
+        <p class="where">A cabin on ten acres of alders, on the Olympic Peninsula.</p>
         <p class="meta">Sleeps two to four
 Open for booking</p>
       </div>
@@ -842,7 +842,7 @@ Open for booking</p>
   <section class="dek fade-up">
     <div></div>
     <div>
-      <h2>Two hours from Seattle, in the shadow of the <em>Olympic Peninsula</em> — built for people who need a place to stop being busy.</h2>
+      <h2>Two hours from Seattle, at the doorstep of <em>Olympic National Park</em> — built for people who need a place to stop being busy.</h2>
       <div class="cta-row">
         <a class="book-btn" href="#reserve">Book a stay <span class="arrow" aria-hidden="true"></span></a>
       </div>
@@ -850,9 +850,9 @@ Open for booking</p>
   </section>
 
   <!-- ===== GALLERY ===== -->
-  <section class="gallery fade-up" id="gallerySection" aria-label="Gallery — the cabin, in pieces">
+  <section class="gallery fade-up" id="gallerySection" aria-label="Gallery — the cabin, at a glance">
     <div class="gallery-sticky">
-      <p class="label">— The cabin, in pieces</p>
+      <p class="label">— The cabin, at a glance</p>
       <div class="gallery-track" id="galleryTrack">
         <div class="gallery-item portrait"  style="background-image: url('assets/carousel/IMG_5434%201.png'); background-position: center center;"></div>
         <div class="gallery-item landscape" style="background-image: url('assets/carousel/IMG_5646%202.png'); background-position: center center;"></div>
@@ -874,21 +874,25 @@ Open for booking</p>
   <!-- ===== SPREAD 01 — THE CABIN ===== -->
   <section class="spread fade-up" id="cabin">
     <p class="chapter"><span class="num">01</span>The cabin</p>
-    <h2 class="headline">Cedar, glass, and a deck full of <em>light.</em></h2>
-    <div class="photo" style="background-image: url('assets/cabin-portrait.jpg'); background-position: center 30%;"></div>
+    <h2 class="headline">Cedar, glass, warm light, and room to hear the forest.</h2>
+    <div class="photo" style="background-image: url('assets/cabin%20vertical.png'); background-position: center 30%;"></div>
     <div class="body">
-      <p>Norma sits on ten acres of alder woodland at the edge of Olympic National Park. One bedroom, a loft, full kitchen, fireplace, projector, curated CDs, a shower with a window into the trees. Soft light through a skylight. Deer move through most mornings.</p>
+      <p>Norma sits on ten acres of alder woodland at the edge of Olympic National Park. Featuring one bedroom, a loft, full kitchen, fireplace, projector, curated CDs and a shower with a window into the trees. Wake up to the gentle warmth through the skylight and friendly deer sightings.</p>
     </div>
   </section>
 
   <!-- ===== SPREAD 02 — THE PLACE ===== -->
   <section class="spread alt fade-up" id="place">
-    <p class="chapter"><span class="num">02</span>The place</p>
-    <h2 class="headline">Two hours from <em>Seattle.</em> Far enough.</h2>
+    <p class="chapter"><span class="num">02</span>The area</p>
+    <h2 class="headline">Two hours from <em>Seattle.</em> Close enough.</h2>
     <div class="body">
-      <p>The cabin is twenty-five minutes from Port Angeles, five minutes from the beach, fifteen from a lake so clear it doesn't look real. Most guests pick one thing a day. Most days, one thing is enough.</p>
+      <p>The cabin is twenty minutes from Port Angeles, five from the beach, and fifteen from a lake so clear it doesn't look real. Most guests pick one activity a day. And most days, that's enough.</p>
     </div>
-    <div class="photo" style="background-image: url('assets/IMG_5342%202.png');"></div>
+    <div class="photo" style="padding:0;overflow:hidden;">
+      <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="assets/deer.mov" type="video/mp4">
+      </video>
+    </div>
   </section>
 
   <!-- ===== FULL-BLEED ===== -->
@@ -900,7 +904,7 @@ Open for booking</p>
     <div class="guide-head">
       <div class="guide-head-text">
         <p class="label">— While you're here</p>
-        <h2>A few places worth <em>knowing about.</em></h2>
+        <h2>A few ways to spend the day, if you feel like leaving.</h2>
       </div>
       <div class="guide-nav" role="group" aria-label="Guide navigation">
         <button class="guide-btn" id="guidePrev" aria-label="Previous" disabled>←</button>
@@ -932,35 +936,35 @@ Open for booking</p>
             <p class="entry-body">A wild, uncrowded stretch of coastline on the Strait. Good for surfing when conditions are right. Good for sitting when they're not.</p>
           </article>
           <article class="guide-entry">
-            <p class="entry-distance">~30 min from the cabin</p>
-            <h3 class="entry-name">Lake Crescent — Devil's Punchbowl</h3>
-            <p class="entry-body">One of the clearest lakes in Washington, deep enough that the water turns a particular shade of blue on sunny days. The Devil's Punchbowl is a swimming and cliff-jumping spot on the north shore, reached via a flat mile-long walk along the Spruce Railroad Trail. Cold water. Worth it.</p>
-          </article>
-        </div>
-
-        <div class="guide-slide">
-          <article class="guide-entry">
             <p class="entry-distance">~20 min from the cabin</p>
             <h3 class="entry-name">Granny's Cafe</h3>
             <p class="entry-body">On Highway 101, west of Port Angeles. Burgers, homemade pies, and soft-serve ice cream. There are farm animals out back — chickens, goats, emus. It's been there since 1956 and feels like it. Go for the blackberry pie.</p>
           </article>
-          <article class="guide-entry">
-            <p class="entry-distance">Port Angeles, ~25 min</p>
-            <h3 class="entry-name">Lincoln Park</h3>
-            <p class="entry-body">The grocery store in town with the best snack selection. Good for a first stop on the way in.</p>
-          </article>
         </div>
 
         <div class="guide-slide">
           <article class="guide-entry">
             <p class="entry-distance">Port Angeles, ~25 min</p>
+            <h3 class="entry-name">Lincoln Park</h3>
+            <p class="entry-body">The grocery store in town with the best selection of snacks and healthy sandwiches. Good for a stop throughout the day.</p>
+          </article>
+          <article class="guide-entry">
+            <p class="entry-distance">Port Angeles, ~25 min</p>
             <h3 class="entry-name">Country Aire</h3>
-            <p class="entry-body">Natural and local provisions. Where to go if you're stocking the fridge properly.</p>
+            <p class="entry-body">Natural and local provisions. The place to visit if you're stocking the fridge properly.</p>
+          </article>
+        </div>
+
+        <div class="guide-slide">
+          <article class="guide-entry">
+            <p class="entry-distance">~30 min from the cabin</p>
+            <h3 class="entry-name">Lake Crescent — Devil's Punchbowl</h3>
+            <p class="entry-body">One of the clearest lakes in Washington, deep enough that the water turns a particular shade of blue on sunny days. The Devil's Punchbowl is a swimming and jumping spot on the north shore, reachable via a mile-long walk along the Spruce Railroad Trail. The water is slightly cold and totally worth it.</p>
           </article>
           <article class="guide-entry">
             <p class="entry-distance">~1.5 hrs — worth a full day</p>
             <h3 class="entry-name">La Push</h3>
-            <p class="entry-body">The Quileute coast on the Pacific side of the peninsula. First Beach is accessible right from the parking lot — black sand, driftwood, sea stacks, seals in the water. Second Beach requires a short hike and rewards it. No cell service to speak of. Bring everything you need.</p>
+            <p class="entry-body">The Quileute coast on the Pacific side of the peninsula. First Beach is accessible right from the parking lot — black sand, driftwood, sea stacks, seals in the water. Second Beach requires a short hike and rewards it. No cell service at all, so bring everything you need.</p>
           </article>
         </div>
 
@@ -972,8 +976,8 @@ Open for booking</p>
   <section class="note-from-us fade-up" aria-label="A note from us">
     <p class="label">— A note from us</p>
     <div class="body">
-      <p>We built Norma the way we wanted a cabin to feel. Slow mornings, long shadows on the deck, <em>nothing</em> to do that has to get done.</p>
-      <p>The road in is quiet. The neighbors are trees. We hope you stay a little longer than you planned, and that when you leave you take some of it with you.</p>
+      <p>We built Norma around the kind of quiet we were always looking for: slow mornings, long shadows on the deck, music playing softly, and nothing that has to get done.</p>
+      <p>The road in is quiet. The neighbors are trees. We hope you stay a little longer than you planned, and leave with some of the forest still in you.</p>
     </div>
   </section>
 
@@ -983,9 +987,9 @@ Open for booking</p>
       <img class="reserve-dog" src="assets/dog-chair.png" alt="" aria-hidden="true" />
       <div class="reserve-content">
         <h2>Saved you <em>a spot.</em></h2>
-        <p>A small number of weekends are available. Two nights minimum. Sleeps two to four. Get in touch by email — we'll write back the same day.</p>
+        <p>Check your dates for current availability, rates, and stay minimums. Norma sleeps up to four. Book on Airbnb.</p>
         <div class="cta-row">
-          <a class="book-btn" href="mailto:reservations@staywithnorma.com">Book a stay <span class="arrow" aria-hidden="true"></span></a>
+          <a class="book-btn" href="https://www.airbnb.com/rooms/1602635499147739732" target="_blank" rel="noopener">Book a stay <span class="arrow" aria-hidden="true"></span></a>
         </div>
       </div>
     </div>
@@ -999,7 +1003,7 @@ Open for booking</p>
   </a>
   <nav class="links" aria-label="Footer">
     <a href="#cabin">The cabin</a>
-    <a href="#place">The place</a>
+    <a href="#place">The area</a>
     <a href="#guide">Guide</a>
     <a href="#reserve">Reserve</a>
     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
