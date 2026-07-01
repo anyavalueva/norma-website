@@ -133,7 +133,7 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background-image: url("assets/cabin-close.png");
+      background-image: url("assets/cabin-hero.jpg");
       background-size: cover;
       background-position: center 50%;
       background-color: var(--cream-soft);
@@ -1059,6 +1059,11 @@ Open for booking</p>
   updateHero();
   window.addEventListener('scroll', updateHero, { passive: true });
   window.addEventListener('resize', updateHero);
+
+  // ── Video autoplay fallback ──────────────────────────────────────────────────
+  document.querySelectorAll('video[autoplay]').forEach(v => {
+    v.play().catch(() => {});
+  });
 
   // ── Guide carousel — fade swap ──────────────────────────────────────────────
   // Slides stack via grid-area: 1/1; only the active one is visible.
