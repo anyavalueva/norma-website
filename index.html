@@ -7,7 +7,8 @@
   <meta name="description" content="A small cabin in the alders on the Olympic Peninsula. Sleeps two to four. Opening summer 2026." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/cabin-hero.jpg" />
   <style>
     /* ============ TOKENS ============ */
     :root {
@@ -367,27 +368,6 @@
     /* Alternate orientation — photo right, text left */
     .spread.alt .photo { grid-column: 6 / span 7; aspect-ratio: 4 / 5; }
     .spread.alt .body  { grid-column: 1 / span 4; align-self: start; padding-top: 8px; }
-
-    /* ============ FULL-BLEED PHOTO ============ */
-    .full-photo {
-      width: 100%;
-      aspect-ratio: 21 / 9;
-      background-image: url("assets/birch-grove-compressed.jpg");
-      background-size: cover;
-      background-position: center 60%;
-      background-color: var(--cream-soft);
-      position: relative;
-    }
-    .full-photo .caption {
-      position: absolute;
-      left: var(--gutter);
-      bottom: 20px;
-      color: rgba(244, 239, 230, 0.92);
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: 14px;
-    }
 
     /* ============ HORIZONTAL PHOTO GALLERY ============ */
     .gallery {
@@ -863,7 +843,6 @@ Open for booking</p>
         <div class="gallery-item short"     style="background-image: url('assets/carousel/IMG_5570%202.jpg'); background-position: center center;"></div>
         <div class="gallery-item portrait"  style="background-image: url('assets/carousel/IMG_5769%201.jpg'); background-position: center center;"></div>
         <div class="gallery-item landscape" style="background-image: url('assets/carousel/IMG_5850%201.jpg'); background-position: center center;"></div>
-        <div class="gallery-item short"     style="background-image: url('assets/carousel/IMG_5723%201.jpg'); background-position: center center; display: none;"></div>
         <div class="gallery-item portrait" style="background-image: url('assets/carousel/IMG_5716%201.jpg'); background-position: center center;"></div>
         <div class="gallery-item landscape" style="background-image: url('assets/carousel/IMG_5506%202.jpg'); background-position: center center;"></div>
         <div class="gallery-item short"     style="background-image: url('assets/carousel/IMG_5656%201.jpg'); background-position: center center;"></div>
@@ -889,15 +868,11 @@ Open for booking</p>
       <p>The cabin is twenty minutes from Port Angeles, five from the beach, and fifteen from a lake so clear it doesn't look real. Most guests pick one activity a day. And most days, that's enough.</p>
     </div>
     <div class="photo" style="padding:0;overflow:hidden;">
-      <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
-        <source src="assets/deer.mov" type="video/mp4">
+      <video id="deerVideo" muted loop playsinline preload="none" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="assets/deer-web.mp4" type="video/mp4">
       </video>
     </div>
   </section>
-
-  <!-- ===== FULL-BLEED ===== -->
-  <div class="full-photo fade-up" role="img" aria-label="Birch grove in afternoon light" style="display: none;">
-  </div>
 
   <!-- ===== GUIDE ===== -->
   <section class="guide fade-up" id="guide" aria-label="Places nearby">
@@ -984,7 +959,7 @@ Open for booking</p>
   <!-- ===== RESERVE ===== -->
   <section class="reserve fade-up" id="reserve">
     <div class="reserve-layout">
-      <img class="reserve-dog" src="assets/dog-chair.png" alt="" aria-hidden="true" />
+      <img class="reserve-dog" src="assets/dog-chair-web.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
       <div class="reserve-content">
         <h2>Saved you <em>a spot.</em></h2>
         <p>Check your dates for current availability, rates, and stay minimums. Norma sleeps up to four. Book on Airbnb.</p>
@@ -1026,16 +1001,9 @@ Open for booking</p>
 
   // ── Nav: hidden over hero, appears once scrolled past it ────────────────────
   const nav = document.querySelector('.nav');
-  let ticking = false;
   function updateNav() {
     nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 1.5);
   }
-  updateNav();
-  window.addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => { updateNav(); ticking = false; });
-  }, { passive: true });
 
   // ── Hero three-stage scroll reveal ─────────────────────────────────────────
   const heroShell      = document.getElementById('heroShell');
@@ -1056,14 +1024,24 @@ Open for booking</p>
 
     heroShell.setAttribute('data-revealed', p > 0.55 ? 'true' : 'false');
   }
-  updateHero();
-  window.addEventListener('scroll', updateHero, { passive: true });
-  window.addEventListener('resize', updateHero);
 
-  // ── Video autoplay fallback ──────────────────────────────────────────────────
-  document.querySelectorAll('video[autoplay]').forEach(v => {
-    v.play().catch(() => {});
-  });
+  // ── Deer video — deferred load, plays once its section approaches ──────────
+  const deerVideo = document.getElementById('deerVideo');
+  function startDeerVideo() {
+    deerVideo.load();
+    deerVideo.play().catch(() => {});
+  }
+  if ('IntersectionObserver' in window) {
+    const vio = new IntersectionObserver((entries) => {
+      if (entries.some(e => e.isIntersecting)) {
+        startDeerVideo();
+        vio.disconnect();
+      }
+    }, { rootMargin: '200% 0px' });
+    vio.observe(deerVideo);
+  } else {
+    startDeerVideo();
+  }
 
   // ── Guide carousel — fade swap ──────────────────────────────────────────────
   // Slides stack via grid-area: 1/1; only the active one is visible.
@@ -1106,9 +1084,21 @@ Open for booking</p>
     const maxShift = Math.max(0, galleryTrack.scrollWidth - window.innerWidth + 80);
     galleryTrack.style.transform = `translate3d(${-t * maxShift}px, 0, 0)`;
   }
-  updateGallery();
-  window.addEventListener('scroll', updateGallery, { passive: true });
-  window.addEventListener('resize', updateGallery);
+
+  // ── Single rAF-throttled scroll/resize handler for all scroll effects ──────
+  function onScrollFrame() {
+    updateNav();
+    updateHero();
+    updateGallery();
+  }
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { onScrollFrame(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', onScrollFrame);
+  onScrollFrame();
 </script>
 </body>
 </html>
