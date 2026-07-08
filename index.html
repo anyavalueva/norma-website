@@ -25,6 +25,12 @@
       --col-gap:  clamp(20px, 2.5vw, 36px);
       --row-pad:  clamp(96px, 14vh, 160px);
       --row-pad-l: clamp(120px, 18vh, 200px);
+
+      /* Max content width — beyond this, side padding grows so content
+         stays centered instead of leaning left. Full-width backgrounds
+         and hairline dividers are unaffected. */
+      --content-max: 1600px;
+      --pad-x: max(var(--gutter), (100% - var(--content-max)) / 2);
     }
 
     /* ============ RESET ============ */
@@ -68,7 +74,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px var(--gutter);
+      padding: 24px var(--pad-x);
       border-bottom: 1px solid transparent;
       opacity: 0;
       pointer-events: none;
@@ -184,8 +190,8 @@
     .masthead {
       position: absolute;
       top: clamp(24px, 4vw, 40px);
-      left: var(--gutter);
-      right: var(--gutter);
+      left: var(--pad-x);
+      right: var(--pad-x);
       z-index: 5;
       display: flex;
       justify-content: space-between;
@@ -210,8 +216,8 @@
     /* Hero foot — editorial subtitle row */
     .hero-foot {
       position: absolute;
-      left: var(--gutter);
-      right: var(--gutter);
+      left: var(--pad-x);
+      right: var(--pad-x);
       bottom: clamp(32px, 5vw, 56px);
       z-index: 5;
       display: grid;
@@ -262,7 +268,7 @@
 
     /* ============ DEK / LEDE ============ */
     .dek {
-      padding: var(--row-pad) var(--gutter);
+      padding: var(--row-pad) var(--pad-x);
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: var(--col-gap);
@@ -295,7 +301,7 @@
 
     /* ============ SPREAD — magazine layout ============ */
     .spread {
-      padding: var(--row-pad) var(--gutter);
+      padding: var(--row-pad) var(--pad-x);
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: var(--col-gap);
@@ -431,7 +437,7 @@
 
     /* ============ NEARBY GUIDE ============ */
     .guide {
-      padding: var(--row-pad) var(--gutter);
+      padding: var(--row-pad) var(--pad-x);
       border-bottom: 1px solid var(--hairline);
     }
     .guide-head {
@@ -547,7 +553,7 @@
 
     /* ============ NOTE FROM US ============ */
     .note-from-us {
-      padding: var(--row-pad-l) var(--gutter);
+      padding: var(--row-pad-l) var(--pad-x);
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: var(--col-gap);
@@ -606,7 +612,7 @@
 
     /* ============ RESERVE ============ */
     .reserve {
-      padding: var(--row-pad-l) var(--gutter);
+      padding: var(--row-pad-l) var(--pad-x);
     }
     .reserve-layout {
       display: flex;
@@ -697,7 +703,7 @@
 
     /* ============ FOOTER ============ */
     footer {
-      padding: clamp(48px, 6vw, 80px) var(--gutter) clamp(28px, 4vw, 40px);
+      padding: clamp(48px, 6vw, 80px) var(--pad-x) clamp(28px, 4vw, 40px);
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: clamp(28px, 4vw, 56px);
