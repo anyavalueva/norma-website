@@ -757,6 +757,23 @@
       html { scroll-behavior: auto; }
     }
 
+    /* ============ WIDE SCREENS — center underfilled compositions ============
+       Above --content-max the reserve and note blocks are centered via
+       --pad-x, but their content underfills that width and hugs the left.
+       Center the content group so it sits balanced on the page. */
+    @media (min-width: 1601px) {
+      .note-from-us {
+        grid-template-columns: auto minmax(0, 68ch);
+        justify-content: center;
+        column-gap: clamp(40px, 5vw, 100px);
+        row-gap: var(--col-gap);
+      }
+      .note-from-us .label { grid-column: 1; }
+      .note-from-us .body  { grid-column: 2; }
+      .reserve-layout      { justify-content: center; }
+      .reserve-content     { flex: 0 1 auto; }
+    }
+
     /* ============ RESPONSIVE — ≤ 860px ============ */
     @media (max-width: 860px) {
       .nav .links a          { font-size: 11px; letter-spacing: 0.16em; }
